@@ -36,3 +36,10 @@ Use these settings when creating the Pages project:
 
 - Build command: `npm run build`
 - Output directory: `dist`
+
+## Cloudflare Workers deployment
+
+This repo also includes a minimal `wrangler.jsonc` for Cloudflare's newer Workers flow:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
