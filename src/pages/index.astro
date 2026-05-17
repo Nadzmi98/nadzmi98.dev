@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+<BaseLayout>
+  <section class="hero">
+    <h1>Notes from a quieter corner of the internet.</h1>
+    <p>
+      A personal blog for essays, observations, and ideas worth giving a little more room.
+    </p>
+  </section>
+
+  <h2 class="section-title">Latest posts</h2>
+  <PostList posts={posts} />
+</BaseLayout>

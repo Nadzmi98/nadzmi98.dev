@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nadzmi Writes',
+  description = 'A quiet corner for notes, essays, and things worth keeping.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="/">Nadzmi Writes</a>
+        <nav aria-label="Primary">
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="site-footer">Built with Astro. Written slowly.</footer>
+    </div>
+  </body>
+</html>
