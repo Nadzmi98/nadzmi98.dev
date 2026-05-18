@@ -2,7 +2,7 @@
 title: My First Post
 description: Testing
 date: 2026-05-18
-draft: true
+draft: false
 ---
 
 Testing
