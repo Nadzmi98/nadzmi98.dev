@@ -39,6 +39,7 @@ async function gh<T>(env: Env, path: string, init?: RequestInit): Promise<T> {
     headers: {
       authorization: `Bearer ${env.GITHUB_TOKEN}`,
       accept: 'application/vnd.github+json',
+      'user-agent': 'nadzmi98-admin-worker',
       'x-github-api-version': '2022-11-28',
       ...(init?.headers ?? {}),
     },
