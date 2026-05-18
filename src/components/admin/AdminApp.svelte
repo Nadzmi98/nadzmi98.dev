@@ -20,9 +20,14 @@
   let busy = false;
 
   async function api<T>(path: string, init?: RequestInit): Promise<T> {
+    const headers = new Headers(init?.headers);
+    if (init?.body && !headers.has('content-type')) {
+      headers.set('content-type', 'application/json');
+    }
     const response = await fetch(path, {
-      headers: { 'content-type': 'application/json', ...(init?.headers ?? {}) },
       ...init,
+      credentials: 'same-origin',
+      headers,
     });
     if (!response.ok) throw new Error(await response.text());
     return response.json();
@@ -108,7 +113,11 @@
   async function uploadImage(file: File) {
     const body = new FormData();
     body.append('file', file);
-    const response = await fetch('/api/admin/upload', { method: 'POST', body });
+    const response = await fetch('/api/admin/upload', {
+      method: 'POST',
+      body,
+      credentials: 'same-origin',
+    });
     if (!response.ok) throw new Error(await response.text());
     return response.json() as Promise<{ url: string }>;
   }
