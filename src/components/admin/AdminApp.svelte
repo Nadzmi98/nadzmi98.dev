@@ -19,14 +19,14 @@
   let status = 'Loading…';
   let busy = false;
 
-  const api = async <T>(path: string, init?: RequestInit): Promise<T> => {
+  async function api<T>(path: string, init?: RequestInit): Promise<T> {
     const response = await fetch(path, {
       headers: { 'content-type': 'application/json', ...(init?.headers ?? {}) },
       ...init,
     });
     if (!response.ok) throw new Error(await response.text());
     return response.json();
-  };
+  }
 
   async function load() {
     try {
