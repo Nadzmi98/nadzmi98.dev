@@ -143,14 +143,14 @@
 </script>
 
 <svelte:head>
-  <title>Admin | Nadzmi Writes</title>
+  <title>Admin | Personal Blog</title>
 </svelte:head>
 
 <div class="admin-shell">
   <aside>
     <div class="brand-block">
       <div class="eyebrow">Private admin</div>
-      <h1>Nadzmi Writes</h1>
+      <h1>Personal Blog</h1>
     </div>
 
     <nav>
