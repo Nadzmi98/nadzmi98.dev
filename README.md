@@ -43,3 +43,12 @@ This repo also includes a minimal `wrangler.jsonc` for Cloudflare's newer Worker
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy`
+
+## Admin setup
+
+The private admin lives at `/admin` and expects two Worker secrets:
+
+- `GITHUB_TOKEN`: a GitHub token with permission to read and write this repository
+- `ADMIN_EMAIL`: the single email address allowed through the admin API
+
+Protect both `/admin*` and `/api/admin/*` with Cloudflare Access so only your account can reach them.
